@@ -1,0 +1,35 @@
+/*<output#*//*#output>*/
+/*<tests#*/beforeEach(() => {
+  _resetUserInteractions_();
+})
+  it("Hay una imagen", () => {
+    document.querySelector("img").should.exist;
+  })
+
+  it("Si ingresamos chica, la imagen se muestra con 200px", function() {
+    _stubPromptResponse_('chica');
+    _resetDocument_();
+    
+    document.querySelector('img').should.have.style('width', '200px');
+  });
+  
+  it("Si ingresamos mediana la imagen se muestra con 500px", function() {
+    _stubPromptResponse_('mediana');
+    _resetDocument_();
+    
+    document.querySelector('img').should.have.style('width', '500px');
+  });
+  
+  it("Si ingresamos grande, la imagen se muestra con 800px", function() {
+    _stubPromptResponse_('grande');
+    _resetDocument_();
+    
+    document.querySelector('img').should.have.style('width', '800px');
+  });
+  
+
+  
+  
+/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

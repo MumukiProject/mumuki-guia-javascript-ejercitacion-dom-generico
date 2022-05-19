@@ -1,0 +1,53 @@
+/*<output#*//*#output>*/
+/*<tests#*/beforeEach(() => {
+  _resetUserInteractions_();
+})
+
+  it("Hay una card con la clase card", () => {
+    document.querySelector("div[class='card']").should.exist;
+  })
+  
+  it("La card tiene una imagen", () => {
+    document.querySelectorAll("card img").should.exist;
+  })
+  
+  it("La card tiene un título h1", () => {
+    document.querySelectorAll("card h1").should.exist;
+  })
+  
+  it("La card tiene un link que dice Leer más", () => {
+    document.querySelector("a").should.have.trimmed.text("Leer más");
+  })
+  
+  it("Si ingresamos un título, el mismo se muestra en la card", () => {
+    _stubPromptResponse_('Eterno resplandor de una mente sin recuerdos');
+    _stubPromptResponse_('https://www.soft-data.com/Gestor/DigitalNews//img/publicaciones/2020/02/16/alta/12894.jpg');
+    _stubPromptResponse_('https://es.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind');
+    _resetDocument_();
+    
+    document.querySelectorAll("h1")[0].should.have.trimmed.text("Eterno resplandor de una mente sin recuerdos");
+  })
+  
+  it("Si ingresamos una imagen se muestra en la card", () => {
+    _stubPromptResponse_('Eterno resplandor de una mente sin recuerdos');
+    _stubPromptResponse_('https://www.soft-data.com/Gestor/DigitalNews//img/publicaciones/2020/02/16/alta/12894.jpg');
+    _stubPromptResponse_('https://es.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind');
+    _resetDocument_();
+    
+    let imagenEnHTML = document.querySelector('img').getAttribute('src');
+    imagenEnHTML.should.eql('https://www.soft-data.com/Gestor/DigitalNews//img/publicaciones/2020/02/16/alta/12894.jpg');
+  })
+  
+  it("Si ingresamos un link se corresponde con el link de la card", () => {
+    _stubPromptResponse_('Eterno resplandor de una mente sin recuerdos');
+    _stubPromptResponse_('https://www.soft-data.com/Gestor/DigitalNews//img/publicaciones/2020/02/16/alta/12894.jpg');
+    _stubPromptResponse_('https://es.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind');
+    _resetDocument_();
+    
+    let linkEnHTML = document.querySelector('a').getAttribute('href');
+    linkEnHTML.should.eql('https://es.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind');
+  })
+
+/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

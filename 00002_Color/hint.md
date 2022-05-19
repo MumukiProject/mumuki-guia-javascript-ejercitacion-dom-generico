@@ -1,0 +1,1 @@
+El valor hexadecimal ingresado en el `prompt` debe incluir el `#`, por ejemplo podríamos ingresar `#FF6600`.

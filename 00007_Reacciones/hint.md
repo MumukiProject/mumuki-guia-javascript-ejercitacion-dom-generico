@@ -1,0 +1,1 @@
+El color gris suave al que nos referimos es el `#D3D3D3` en el sistema hexadecimal. :relieved:

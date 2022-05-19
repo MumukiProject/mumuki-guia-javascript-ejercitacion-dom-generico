@@ -1,0 +1,42 @@
+/*<output#*//*#output>*/
+/*<tests#*/beforeEach(() => {
+  _resetUserInteractions_();
+})
+
+  it("Hay un div con el id contenedor", () => {
+    document.querySelector("div[id='contenedor']").should.exist;
+  })
+  
+  it("Hay un div con el id barra", () => {
+    document.querySelector("div[id='barra']").should.exist;
+  })
+
+  it("Si ingresamos 25 la barra se carga en un 25%", function() {
+    _stubPromptResponse_(25);
+    _resetDocument_();
+    
+    document.getElementById('barra').should.have.style('width', '25%');
+  });
+  
+  it("Si ingresamos 80 la barra se carga en un 80%", function() {
+    _stubPromptResponse_(80);
+    _resetDocument_();
+    
+    document.getElementById('barra').should.have.style('width', '80%');
+  });
+  
+  it("Si ingresamos 101 la barra se carga en un 100%", function() {
+    _stubPromptResponse_(101);
+    _resetDocument_();
+    
+    document.getElementById('barra').should.have.style('width', '100%');
+  });
+  
+  it("Si ingresamos -15 la barra se carga en un 0%", function() {
+    _stubPromptResponse_(-15);
+    _resetDocument_();
+    
+    document.getElementById('barra').should.have.style('width', '0%');
+  });/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

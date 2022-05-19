@@ -1,0 +1,59 @@
+/*<output#*//*#output>*/
+/*<tests#*/describe("", function() {
+  context("", () => {
+    describe("", () => {
+      let imagenes;
+      beforeEach(() => {
+        _resetUserInteractions_();
+         imagenes = document.querySelectorAll('img');
+      });
+      
+      it("Hay tres imágenes", () => {
+        document.querySelectorAll("img").length.should.eql(3);
+      });
+      
+      it("Todas las imágenes tienen el atributo data-animal", () => {
+        imagenes[0].should.have.attr('data-animal');
+        imagenes[1].should.have.attr('data-animal');
+        imagenes[2].should.have.attr('data-animal');
+      });
+      
+      it("La card tiene un título h1", () => {
+        document.querySelectorAll("card h1").should.exist;
+      });
+  
+      it("Si ingresamos el primer animal por el prompt solo se muestra ese animal", () => {
+        let primerData = imagenes[0].getAttribute('data-animal');
+        _stubPromptResponse_(primerData);
+        _resetDocument_();
+        
+        document.querySelectorAll('img')[0].should.have.style('visibility', 'visible');
+        document.querySelectorAll('img')[1].should.have.style('visibility', 'hidden');
+        document.querySelectorAll('img')[2].should.have.style('visibility', 'hidden');
+      });
+      
+      it("Si ingresamos el segundo animal por el prompt solo se muestra ese animal", () => {
+        let segundaData = imagenes[1].getAttribute('data-animal');
+        _stubPromptResponse_(segundaData);
+        _resetDocument_();
+        
+        document.querySelectorAll('img')[0].should.have.style('visibility', 'hidden');
+        document.querySelectorAll('img')[1].should.have.style('visibility', 'visible');
+        document.querySelectorAll('img')[2].should.have.style('visibility', 'hidden');
+      });
+      
+      it("Si ingresamos el tercer animal por el prompt solo se muestra ese animal", () => {
+        let terceraData = imagenes[2].getAttribute('data-animal');
+        _stubPromptResponse_(terceraData);
+        _resetDocument_();
+        
+        document.querySelectorAll('img')[0].should.have.style('visibility', 'hidden');
+        document.querySelectorAll('img')[1].should.have.style('visibility', 'hidden');
+        document.querySelectorAll('img')[2].should.have.style('visibility', 'visible');
+      });
+      
+    });
+  });  
+});/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

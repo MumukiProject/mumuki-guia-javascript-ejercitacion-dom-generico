@@ -1,0 +1,3 @@
+Ale también nos pidió un programa para trabajar con los colores en sistema `rgb`, para ello vamos a crear una página que al iniciar pida mediante tres `prompt`s los valores correspondientes al sistema `rgb`, y una vez ingresados ponga el color de fondo del body con dicho color. Los valores van del 0 al 255 y corresponden a `rojo`, `verde` y `azul`.
+
+> Creá el código JavaScript para lograr el comportamiento descripto anteriormente.

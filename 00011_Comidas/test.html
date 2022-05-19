@@ -1,0 +1,102 @@
+/*<output#*//*#output>*/
+/*<tests#*/describe("", function() {
+  context("", () => {
+    describe("", () => {
+      let comidas;
+      let postres;
+      let bebidas;
+
+      function cargarImagenes() {
+        comidas = document.querySelectorAll("img[data-categoria='comidas']");
+        postres = document.querySelectorAll("img[data-categoria='postres']");
+        bebidas = document.querySelectorAll("img[data-categoria='bebidas']");
+      }
+      beforeEach(() => {
+       cargarImagenes()
+       _resetUserInteractions_();
+      });
+      
+      it("Hay nueve imágenes", () => {
+        document.querySelectorAll("img").length.should.eql(9);
+      });
+      
+      it("Hay tres imágenes por categoría", () => {
+        comidas.length.should.eql(3);
+        postres.length.should.eql(3);
+        bebidas.length.should.eql(3);
+      });
+      
+      it("Las imágenes tienen 150px de ancho", () => {
+        comidas[0].should.have.style('width','150px');
+        comidas[1].should.have.style('width','150px');
+        comidas[2].should.have.style('width','150px');
+        postres[0].should.have.style('width','150px');
+        postres[1].should.have.style('width','150px');
+        postres[2].should.have.style('width','150px');
+        bebidas[0].should.have.style('width','150px');
+        bebidas[1].should.have.style('width','150px');
+        bebidas[2].should.have.style('width','150px');
+      });
+      
+      it("Las imágenes tienen un margen de 20px", () => {
+        comidas[0].should.have.style('margin','20px');
+        comidas[1].should.have.style('margin','20px');
+        comidas[2].should.have.style('margin','20px');
+        postres[0].should.have.style('margin','20px');
+        postres[1].should.have.style('margin','20px');
+        postres[2].should.have.style('margin','20px');
+        bebidas[0].should.have.style('margin','20px');
+        bebidas[1].should.have.style('margin','20px');
+        bebidas[2].should.have.style('margin','20px');
+      });
+      
+      it("Si ingresamos comidas en el prompt se muestran solo las imagenes de comidas", () => {
+        _stubPromptResponse_("comidas");
+        _resetDocument_();
+        cargarImagenes();
+        comidas[0].should.have.style("visibility", "visible");
+        comidas[1].should.have.style("visibility", "visible");
+        comidas[2].should.have.style("visibility", "visible");
+        postres[0].should.have.style("visibility", "hidden");
+        postres[1].should.have.style("visibility", "hidden");
+        postres[2].should.have.style("visibility", "hidden");
+        bebidas[0].should.have.style("visibility", "hidden");
+        bebidas[1].should.have.style("visibility", "hidden");
+        bebidas[2].should.have.style("visibility", "hidden");
+      });
+      
+      it("Si ingresamos postres en el prompt se muestran solo las imagenes de postres", () => {
+        _stubPromptResponse_("postres");
+        _resetDocument_();
+        cargarImagenes();
+        comidas[0].should.have.style("visibility", "hidden");
+        comidas[1].should.have.style("visibility", "hidden");
+        comidas[2].should.have.style("visibility", "hidden");
+        postres[0].should.have.style("visibility", "visible");
+        postres[1].should.have.style("visibility", "visible");
+        postres[2].should.have.style("visibility", "visible");
+        bebidas[0].should.have.style("visibility", "hidden");
+        bebidas[1].should.have.style("visibility", "hidden");
+        bebidas[2].should.have.style("visibility", "hidden");
+      });
+      
+      it("Si ingresamos bebidas en el prompt se muestran solo las imagenes de bebidas", () => {
+        _stubPromptResponse_("bebidas");
+        _resetDocument_();
+        cargarImagenes();
+        comidas[0].should.have.style("visibility", "hidden");
+        comidas[1].should.have.style("visibility", "hidden");
+        comidas[2].should.have.style("visibility", "hidden");
+        postres[0].should.have.style("visibility", "hidden");
+        postres[1].should.have.style("visibility", "hidden");
+        postres[2].should.have.style("visibility", "hidden");
+        bebidas[0].should.have.style("visibility", "visible");
+        bebidas[1].should.have.style("visibility", "visible");
+        bebidas[2].should.have.style("visibility", "visible");
+      });
+      
+    });
+  });  
+});/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/

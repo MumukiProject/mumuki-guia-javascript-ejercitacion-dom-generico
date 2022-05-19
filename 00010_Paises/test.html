@@ -1,0 +1,111 @@
+/*<output#*//*#output>*/
+/*<tests#*/describe("", function() {
+  context("", () => {
+    describe("", () => {
+      let paisesAmerica;
+      let paisesOceania;
+      let paisesAfrica;
+      let paisesAsia;
+      let paisesEuropa;
+
+      function cargarPaises() {
+        paisesAmerica = document.querySelectorAll("li[data-continente='América']");
+        paisesOceania = document.querySelectorAll("li[data-continente='Oceanía']");
+        paisesAfrica = document.querySelectorAll("li[data-continente='África']");
+        paisesAsia = document.querySelectorAll("li[data-continente='Asia']");
+        paisesEuropa = document.querySelectorAll("li[data-continente='Europa']");
+      }
+      beforeEach(() => {
+       cargarPaises()
+       _resetUserInteractions_();
+      });
+      
+      it("Hay diez li", () => {
+        document.querySelectorAll("li").length.should.eql(10);
+      });
+      
+      it("Hay dos países por cada continente", () => {
+        paisesOceania.length.should.eql(2);
+        paisesAfrica.length.should.eql(2);
+        paisesAmerica.length.should.eql(2);
+        paisesAsia.length.should.eql(2);
+        paisesEuropa.length.should.eql(2);
+      });
+      
+      it("Todos los li tienen un atributo data-continente", () => {
+        document.querySelectorAll('li')[0].should.have.attr('data-continente');
+        document.querySelectorAll('li')[1].should.have.attr('data-continente');
+        document.querySelectorAll('li')[2].should.have.attr('data-continente');
+        document.querySelectorAll('li')[3].should.have.attr('data-continente');
+        document.querySelectorAll('li')[4].should.have.attr('data-continente');
+        document.querySelectorAll('li')[5].should.have.attr('data-continente');
+        document.querySelectorAll('li')[6].should.have.attr('data-continente');
+        document.querySelectorAll('li')[7].should.have.attr('data-continente');
+        document.querySelectorAll('li')[8].should.have.attr('data-continente');
+        document.querySelectorAll('li')[9].should.have.attr('data-continente');
+      });
+      
+      it("Si ingresamos América solo se destacan los países que corresponden a América", () => {
+        _stubPromptResponse_("América");
+        _resetDocument_();
+        cargarPaises();
+        paisesAmerica[0].should.have.style("font-weight", "bold");
+        paisesAmerica[0].should.have.style("color", "rgb(255, 0, 0)");
+        paisesAmerica[1].should.have.style("font-weight", "bold");
+        paisesAmerica[1].should.have.style("color", "rgb(255, 0, 0)");
+        paisesEuropa[0].should.not.have.style("color", "rgb(255, 0, 0)");
+        paisesOceania[1].should.not.have.style("font-weight", "bold");
+      });
+      
+      it("Si ingresamos Europa solo se destacan los países que corresponden a Europa", () => {
+        _stubPromptResponse_("Europa");
+        _resetDocument_();
+        cargarPaises();
+        paisesEuropa[0].should.have.style("font-weight", "bold");
+        paisesEuropa[0].should.have.style("color", "rgb(255, 0, 0)");
+        paisesEuropa[1].should.have.style("font-weight", "bold");
+        paisesEuropa[1].should.have.style("color", "rgb(255, 0, 0)");
+        paisesAfrica[0].should.not.have.style("color", "rgb(255, 0, 0)");
+        paisesAsia[1].should.not.have.style("font-weight", "bold");
+      });
+      
+      it("Si ingresamos África solo se destacan los países que corresponden a África", () => {
+        _stubPromptResponse_("África");
+        _resetDocument_();
+        cargarPaises();
+        paisesAfrica[0].should.have.style("font-weight", "bold");
+        paisesAfrica[0].should.have.style("color", "rgb(255, 0, 0)");
+        paisesAfrica[1].should.have.style("font-weight", "bold");
+        paisesAfrica[1].should.have.style("color", "rgb(255, 0, 0)");
+        paisesEuropa[0].should.not.have.style("color", "rgb(255, 0, 0)");
+        paisesAmerica[1].should.not.have.style("font-weight", "bold");
+      });
+      
+      it("Si ingresamos Oceanía solo se destacan los países que corresponden a Oceanía", () => {
+        _stubPromptResponse_("Oceanía");
+        _resetDocument_();
+        cargarPaises();
+        paisesOceania[0].should.have.style("font-weight", "bold");
+        paisesOceania[0].should.have.style("color", "rgb(255, 0, 0)");
+        paisesOceania[1].should.have.style("font-weight", "bold");
+        paisesOceania[1].should.have.style("color", "rgb(255, 0, 0)");
+        paisesAsia[0].should.not.have.style("color", "rgb(255, 0, 0)");
+        paisesAmerica[1].should.not.have.style("font-weight", "bold");
+      });
+      
+      it("Si ingresamos Asia solo se destacan los países que corresponden a Asia", () => {
+        _stubPromptResponse_("Asia");
+        _resetDocument_();
+        cargarPaises();
+        paisesAsia[0].should.have.style("font-weight", "bold");
+        paisesAsia[0].should.have.style("color", "rgb(255, 0, 0)");
+        paisesAsia[1].should.have.style("font-weight", "bold");
+        paisesAsia[1].should.have.style("color", "rgb(255, 0, 0)");
+        paisesAfrica[0].should.not.have.style("color", "rgb(255, 0, 0)");
+        paisesEuropa[1].should.not.have.style("font-weight", "bold");
+      });
+    });
+  });  
+});/*#tests>*/
+/*<options#*/output_ignore_scripts: true
+output_ignore_styles: true/*#options>*/
