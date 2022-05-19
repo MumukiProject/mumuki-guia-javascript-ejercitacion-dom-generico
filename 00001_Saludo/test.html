@@ -15,12 +15,12 @@
     document.querySelector('h1').should.have.style('font-family', 'Roboto');
    });
 
-  it("Si ingresamos Ada, el título h1 muestra Hola Ada. Te damos la bienvenida", function() {
-    _stubPromptResponse_('Ada');
+  it("Si ingresamos Agus, el título h1 muestra Hola Agus. Te damos la bienvenida", function() {
+    _stubPromptResponse_('Agus');
 
     _resetDocument_();
     
-    document.querySelector('h1').should.have.trimmed.text("Hola Ada. Te damos la bienvenida");
+    document.querySelector('h1').should.have.trimmed.text("Hola Agus. Te damos la bienvenida");
   });
   
   it("Si ingresamos Tereshkova, el título h1 muestra Hola Tereshkova. Te damos la bienvenida", function() {
